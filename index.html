@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación de Préstamos</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form { max-width: 400px; margin: auto; }
+        label, input, select { display: block; margin-bottom: 10px; width: 100%; }
+        button { background-color: #4CAF50; color: white; padding: 10px; border: none; cursor: pointer; }
+        .resultado { margin-top: 20px; font-size: 18px; color: #333; }
+    </style>
+    <script>
+        function toggleHistorialPrestamos() {
+            let historialCrediticio = document.getElementById("historial_crediticio").value;
+            let historialPrestamos = document.getElementById("historial_prestamos");
+
+            if (historialCrediticio === "no_aplica") {
+                historialPrestamos.innerHTML = "<option value='no_aplica'>No Aplica</option>";
+                historialPrestamos.disabled = true;
+            } else {
+                historialPrestamos.innerHTML = `
+                    <option value="bueno">Pagados sin retrasos</option>
+                    <option value="regular">Retrasos ocasionales</option>
+                    <option value="malo">Impagos o deudas en mora</option>
+                `;
+                historialPrestamos.disabled = false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Formulario de Evaluación de Préstamo</h2>
+    <form action="/evaluar" method="POST" id="evaluacion-form">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" required>
+        
+        <label for="historial_crediticio">Puntuación Crediticia:</label>
+        <select name="historial_crediticio" id="historial_crediticio" required onchange="toggleHistorialPrestamos()">
+            <option value="no_aplica">No tengo historial crediticio</option>
+            <option value="800">Superior a 750</option>
+            <option value="700">Entre 600 y 750</option>
+            <option value="500">Inferior a 600</option>
+        </select>
+        
+        <label for="ingresos">Ingresos Mensuales:</label>
+        <input type="number" name="ingresos" required>
+        
+        <label for="cuota">Cuota del Préstamo:</label>
+        <input type="number" name="cuota" required>
+        
+        <label for="dti">Relación Deuda/Ingreso (%):</label>
+        <input type="number" name="dti" required>
+        
+        <label for="tipo_empleo">Tipo de Empleo:</label>
+        <select name="tipo_empleo" required>
+            <option value="fijo">Contrato Fijo</option>
+            <option value="temporal">Contrato Temporal</option>
+        </select>
+        
+        <label for="garantias">Garantías Presentadas:</label>
+        <select name="garantias" required>
+            <option value="alta">Propiedad inmueble o aval de alto valor</option>
+            <option value="baja">Aval de menor valor o sin garantías</option>
+        </select>
+        
+        <label for="historial_prestamos">Historial de Préstamos Previos:</label>
+        <select name="historial_prestamos" id="historial_prestamos" required>
+            <option value="bueno">Pagados sin retrasos</option>
+            <option value="regular">Retrasos ocasionales</option>
+            <option value="malo">Impagos o deudas en mora</option>
+        </select>
+        
+        <button type="submit">Evaluar Préstamo</button>
+    </form>
+    
+    {% if resultado %}
+        <div class="resultado">
+            <h3>Hola, {{ nombre }}. El resultado de tu evaluación es: {{ resultado }}</h3>
+        </div>
+    {% endif %}
+</body>
+</html>
