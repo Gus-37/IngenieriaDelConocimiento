@@ -1,0 +1,40 @@
+[
+  {
+    "producto": "Nombre no disponible",
+    "url": "https://www.liverpool.com.mx/tienda/pdp/laptop-gamer-acer-nitro-v15-15.6-pulgadas-full-hd-intel-core-i5-nvidia-geforce-rtx-3050-8-gb-ram-512-gb-ssd/1151792266?skuid=1151792266",
+    "estados": [
+      {
+        "estado": "AGUASCALIENTES",
+        "tiendas": [
+          {
+            "tienda": "Liverpool Ags. Altaria",
+            "stock": "17 piezas"
+          },
+          {
+            "tienda": "Liverpool Aguascalientes Villasunción",
+            "stock": "4 piezas"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "producto": "Nombre no disponible",
+    "url": "https://www.liverpool.com.mx/tienda/pdp/laptop-gamer-hp-victus-15.6-pulgadas-full-hd-amd-ryzen-5-nvidia-geforce-rtx-3050-16-gb-ram-1-tb-ssd/1157330647?skuid=1157330647",
+    "estados": [
+      {
+        "estado": "AGUASCALIENTES",
+        "tiendas": [
+          {
+            "tienda": "Liverpool Ags. Altaria",
+            "stock": "6 piezas"
+          },
+          {
+            "tienda": "Liverpool Aguascalientes Villasunción",
+            "stock": "1 piezas"
+          }
+        ]
+      }
+    ]
+  }
+]
